@@ -25,7 +25,7 @@ Follow these steps to deploy the User Management Frontend:
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/rnscth/user-mgmnt-vuejs
 ```
 
 2. Install dependencies:
@@ -49,6 +49,6 @@ npm run build
 
 - You can find a ready to pair Laravel API on my repositories as usr-mngmt-laravel.
 - You can find a ready to pair NestJS API on my repositories as usr-mngmt-nestjs.
-- Feel free to customize and extend this frontend as needed for your portfolio projects.
+- Feel free to customize and extend this frontend as needed for your projects/practices.
 
 
