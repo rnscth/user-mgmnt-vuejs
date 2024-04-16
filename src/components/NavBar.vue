@@ -4,9 +4,9 @@
             <div class="flex flex-1 items-center justify-between sm:items-stretch sm:justify-start">
                 <div class=" flex sm:ml-6 sm:block">
                   <div class="flex space-x-4">
-                      <NavLink to="users">Users</NavLink>
-                      <NavLink to="groups">Groups</NavLink>
-                      <NavLink to="admin">Administrators</NavLink>
+                      <NavLink to="/users">Users</NavLink>
+                      <!-- <NavLink to="/groups">Groups</NavLink> -->
+                      <NavLink to="/admin">Administrators</NavLink>
                   </div>
                 </div>
             </div>
@@ -28,8 +28,8 @@
                         aria-orientation="vertical" 
                         aria-labelledby="user-menu-button" 
                         tabindex="-1">
-                        <RouterLink to='displayUser'  @click="toggleUserMenu" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</RouterLink>
-                        <RouterLink to="login" @click="toggleUserMenu" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</RouterLink>
+                        <RouterLink to='/displayUser/1'  @click="toggleUserMenu" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</RouterLink>
+                        <RouterLink to="/login" @click="toggleUserMenu" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</RouterLink>
                     </div>
                 </div>
             </div>

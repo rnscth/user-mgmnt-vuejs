@@ -3,7 +3,7 @@
       <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
       <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
         <div class="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-          <h3 class="text-lg leading-6 text-white py-3" id="modal-title">Change User Password</h3>
+          <h3 class="font-semibold text-lg leading-6 text-white py-3" id="modal-title">Change User Password</h3>
           <form @submit.prevent="changePassword">
             <div class="mb-4">
               <label for="password" class="block text-sm text-white">Password</label>

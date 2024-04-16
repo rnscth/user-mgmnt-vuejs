@@ -14,7 +14,7 @@ const router = createRouter({
       component: UsersView
     },
     {
-      path: '/displayUser',
+      path: '/displayUser/:userId',
       name: 'displayUser',
       component: DisplayUserView
     },

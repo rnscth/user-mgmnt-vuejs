@@ -9,6 +9,7 @@ import UsersTable from './components/UsersTable.vue'
 import NavLink from './components/NavLink.vue'
 import CreateUserModal from './components/CreateUserModal.vue'
 import ChangePasswordModal from './components/ChangePasswordModal.vue'
+import DeleteUserModal from './components/DeleteUserModal.vue'
 
 const app = createApp(App)
 
@@ -17,5 +18,6 @@ app.component('UsersTable', UsersTable);
 app.component('NavLink', NavLink);
 app.component('CreateUserModal', CreateUserModal);
 app.component('ChangePasswordModal', ChangePasswordModal);
+app.component('DeleteUserModal', DeleteUserModal);
 app.use(router)
 app.mount('#app')

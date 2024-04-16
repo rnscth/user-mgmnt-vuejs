@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import BASE_URL from './config';
 
@@ -12,8 +13,15 @@ const ApiService = {
   },
 
   // User Management
-  getUsers() {
+  getUsers(page = null) {
+    if (page){
+      return axios.get(`${BASE_URL}/users?page=${page}`);
+    }
     return axios.get(`${BASE_URL}/users`);
+  },
+
+  getSingleUser(userId) {
+    return axios.get(`${BASE_URL}/users/${userId}`);
   },
 
   getUsersAdmins() {

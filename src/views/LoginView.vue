@@ -18,11 +18,11 @@
               <form>
                 <div>
                   <div>
-                    <label for="username" class="text-white">Username:</label>
-                    <input type="text" id="username" v-model="username" class="rounded-md px-3 py-2 my-2 w-full bg-gray-700 text-white">
+                    <label for="email" class="text-white">Email:</label>
+                    <input type="text" id="email" v-model="email" class="rounded-md px-3 py-2 my-2 w-full bg-gray-700 text-white">
                   </div>
                   <div>
-                    <label for="password" class="text-white">Email:</label>
+                    <label for="password" class="text-white">Password:</label>
                     <input type="password" id="password" v-model="password" class="rounded-md px-3 py-2 my-2 w-full bg-gray-700 text-white">
                   </div>
                 </div>
@@ -43,17 +43,31 @@
   </template>
   
   <script>
+import ApiService from '@/api/service';
+
   export default {
     name: "large-modal",
     data() {
       return {
+        email : null,
+        password : null,
         showModal: true
       }
     },
     methods: {
       toggleModal: function(){
         this.showModal = !this.showModal;
-      }
+      },
+      login(){
+        ApiService.login({ email: this.email, password: this.password})
+          .then(response => {
+            // handle login
+            console.log('login success:', response)
+          })
+          .catch(error => {
+            console.error('login error:', error);
+          });
+      },
     }
   }
   </script>

@@ -3,11 +3,11 @@
       <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
       <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
         <div class="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-          <h3 class="text-lg leading-6 text-white py-3" id="modal-title">Create User</h3>
+          <h3 class="font-semibold text-lg leading-6 text-white py-3" id="modal-title">Create User</h3>
           <form @submit.prevent="createUser">
             <div class="mb-4">
-              <label for="username" class="block text-sm text-white">Username</label>
-              <input required='true' type="text" id="username" v-model="newUser.username" class="text-white mt-1 p-2 block w-full rounded-md shadow-sm bg-gray-700 border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+              <label for="Name" class="block text-sm text-white">Name</label>
+              <input required='true' type="text" id="Name" v-model="newUser.Name" class="text-white mt-1 p-2 block w-full rounded-md shadow-sm bg-gray-700 border-gray-300 focus:ring-blue-500 focus:border-blue-500">
             </div>
             <div class="mb-4">
               <label for="password" class="block text-sm text-white">Password</label>
@@ -42,7 +42,7 @@
     data() {
       return {
         newUser: {
-          username: '',
+          Name: '',
           email: '',
           IsAdmin: false
         }
@@ -52,7 +52,7 @@
       createUser() {
         console.log('New User:', this.newUser);
         this.newUser = {
-          username: '',
+          Name: '',
           email: '',
           password: '',
           IsAdmin: false
