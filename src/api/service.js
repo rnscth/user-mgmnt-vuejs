@@ -1,6 +1,9 @@
 
 import axios from 'axios';
 import BASE_URL from './config';
+import { removeToken, setToken } from '@/router/auth';
+import { useRouter } from 'vue-router';
+
 
 const ApiService = {
   // User Authentication
@@ -8,8 +11,27 @@ const ApiService = {
     return axios.post(`${BASE_URL}/login`, credentials);
   },
 
-  jwtRefresh(token) {
-    return axios.post(`${BASE_URL}/refresh`, { token });
+  setToken(token) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    setToken(token)
+  },
+  
+  setUser(user){
+    localStorage.setItem('user', JSON.stringify(user));
+  },
+
+  getLocalUser(){
+    const userJSON = localStorage.getItem('user');
+    return userJSON ? JSON.parse(userJSON) : null;
+  },
+
+  clearToken(){
+    delete axios.defaults.headers.common['Authorization'];
+    removeToken()
+  },
+
+  tokenVerify(token){
+    axios.get(`${BASE_URL}/tokenVerify`, token);
   },
 
   // User Management
@@ -18,10 +40,6 @@ const ApiService = {
       return axios.get(`${BASE_URL}/users?page=${page}`);
     }
     return axios.get(`${BASE_URL}/users`);
-  },
-
-  getSingleUser(userId) {
-    return axios.get(`${BASE_URL}/users/${userId}`);
   },
 
   getUsersAdmins() {
@@ -33,7 +51,7 @@ const ApiService = {
   },
 
   updateUser(userId, userData) {
-    return axios.put(`${BASE_URL}/users/${userId}`, userData);
+    return axios.patch(`${BASE_URL}/users/${userId}`, userData);
   },
 
   deleteUser(userId) {
@@ -46,7 +64,7 @@ const ApiService = {
 
   // Change Password
   changePassword(userId, newPassword) {
-    return axios.put(`${BASE_URL}/users/${userId}/password`, { newPassword });
+    return axios.patch(`${BASE_URL}/users/${userId}`, newPassword );
   },
 
   // Other API methods...

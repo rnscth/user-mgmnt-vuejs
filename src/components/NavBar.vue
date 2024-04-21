@@ -28,8 +28,8 @@
                         aria-orientation="vertical" 
                         aria-labelledby="user-menu-button" 
                         tabindex="-1">
-                        <RouterLink to='/displayUser/1'  @click="toggleUserMenu" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</RouterLink>
-                        <RouterLink to="/login" @click="toggleUserMenu" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</RouterLink>
+                        <RouterLink :to="'/displayUser/' + user.id"  @click="toggleUserMenu" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</RouterLink>
+                        <RouterLink to="/login" @click="logout" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</RouterLink>
                     </div>
                 </div>
             </div>
@@ -38,17 +38,26 @@
 </template>
 
 <script>
-import { RouterLink } from 'vue-router';
+import ApiService from '@/api/service';
+import { RouterLink, useRouter } from 'vue-router';
 
 export default {
   data() {
     return {
-      displayUserMenu: false
+      displayUserMenu: false,
+      router: useRouter(),
+      user: ApiService.getLocalUser()
     };
   },
   methods: {
     toggleUserMenu() {
       this.displayUserMenu = !this.displayUserMenu;
+    },
+    logout() { 
+      ApiService.clearToken()
+      this.toggleUserMenu()
+      this.router.push('/login')
+
     }
   }
 };
